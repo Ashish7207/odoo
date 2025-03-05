@@ -13,8 +13,9 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends locales netc
 
 WORKDIR /app
 
-COPY --chmod=755 entrypoint.sh ./
+COPY entrypoint.sh ./
+RUN chmod +x /app/entrypoint.sh
 
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
-CMD ["entrypoint.sh"]
+CMD ["odoo"]
